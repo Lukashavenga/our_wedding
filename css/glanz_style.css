@@ -129,12 +129,14 @@ html {
 	top: 0;
 	left: 0;
 	position: absolute;
-	z-index: 1
+	z-index: 1;
+	background-repeat: no-repeat;
 }
 .gla_image_bck {
 	-webkit-background-size: cover;
 	background-size: cover;
 	background-position: center;
+	background-repeat: no-repeat;
 }
 .gla_top_menu_mobile_link {
 	display: none;
@@ -4716,19 +4718,6 @@ footer {
 	}
 
 /*07.2 Map*/
-.gla_map iframe {
-	top: -47px;
-	border: 0;
-	position: relative;
-	bottom: -47px;
-	pointer-events: none;
-}
-
-.gla_map {
-	margin-bottom: -17px;
-	width:100%;
-	height: 450px;
-}
 .gla_active_map iframe {
 	pointer-events: auto;
 }
@@ -6021,6 +6010,7 @@ h3 {
 }
 .gla_auto_height .gla_image_bck[data-image] {
 	min-height: 400px;
+	background-repeat: no-repeat;
 }
 .gla_simple_block {
 	padding: 56px 15px 46px;

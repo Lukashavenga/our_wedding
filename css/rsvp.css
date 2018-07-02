@@ -1,0 +1,19 @@
+
+.rsvp_section{
+    display: none;
+}
+.rsvp_attend_container {
+    display: flex;
+    text-align: left;
+    justify-content: space-between;
+    margin: 50px 30px 70px 30px;
+}
+.rsvp_attend{
+    text-align: right;
+}
+.rsvp_attend:first-child {
+    text-align: left;
+}
+.rsvp_attend input[type='radio']{
+    margin: 15px;
+}
