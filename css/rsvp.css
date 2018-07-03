@@ -17,3 +17,16 @@
 .rsvp_attend input[type='radio']{
     margin: 15px;
 }
+
+.subtext{
+    font-style: italic;
+    margin-top: 10px;
+    font-size: 12px;
+}
+.subtext a.hidden_link:hover{
+    text-decoration: none;
+}
+.subtext img{
+    width: 25px;
+    margin: -9px -3px 0 -3px;
+}

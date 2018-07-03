@@ -1,5 +1,14 @@
 (function($) {
 
+    // smooth anchor
+    $(document).on('click', 'a[href^="#"]', function (event) {
+        event.preventDefault();
+
+        $('html, body').animate({
+            scrollTop: $($.attr(this, 'href')).offset().top
+        }, 500);
+    });
+
     let store = {
         current_user: '',
         current_code: null,
@@ -60,11 +69,17 @@
                 $('#partner_link').fadeIn();
             }
         }
-    }
+    };
 
-    let loadRSVPSection = function(){
+    let loadRSVPSection = function(msg){
         $('#partner_rsvp').hide();
         $('#partner_link').hide();
+
+        if(msg){
+            $('.rsvp_attend label').html(msg);
+        }else{
+            $('.rsvp_attend label').html('Sien ons jou daar?');
+        }
 
         if(store.current_code){
             if(store.current_user && store.current_user !== '')
@@ -136,7 +151,7 @@
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify({rsvps})
         }).done(function(response) {
-            callback('Perfek! baie dankie vir jou tyd - ons het dit so aangeteken :D');
+            callback('Perfek! baie dankie vir die laat weet - ons het dit so aangeteken :D');
             if(response)
                 console.log(response)
 
@@ -159,15 +174,20 @@
         let notes = $(this).find('[name=message]').val();
         let rsvps = [{'status':status,'code':code,'notes':notes}];
 
-        if(store.linked_submit){
-            let partner_code = store.linked_code;
-            let partner_status = $(this).find('[name=partner_attend]:checked').val();
-            // There's no partner notes
+        // Ensure RSVP is set for current user
+        if(status){
+            if(store.linked_submit){
+                let partner_code = store.linked_code;
+                let partner_status = $(this).find('[name=partner_attend]:checked').val();
+                // There's no partner notes
 
-            rsvps.push({'status':partner_status,'code':partner_code,'notes':notes});
+                rsvps.push({'status':partner_status,'code':partner_code,'notes':notes});
+            }
+
+            submitRSVP(code,rsvps,loadMessage);
+        }else{
+            loadRSVPSection("Laat weet ons asseblief of jy sal kan bywoon");
         }
-
-        submitRSVP(code,rsvps,loadMessage);
     });
 
     $('#backRSVP').on('click',function(){

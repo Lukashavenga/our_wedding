@@ -1778,6 +1778,16 @@ ul.mega-menu {
 		.gla_main_menu_content_menu.gla_wht_txt a {
 			color: #fff!important;
 		}
+
+		@keyframes heart {
+			0%   {height: 35px;top: 10px;}
+			25%  {height: 19px;top: 18px;}
+			45%  {height: 21px;top: 15.5px;}
+			50%  {height: 19px;top: 18px;}
+			65%	 {height: 20px;top: 17px;}
+			75%  {height: 21px;top: 16px;}
+			100% {height: 21px;top: 15px;}
+		}
 	
 		.gla_logo {
 			font:900 24px/18px Dosis, Arial;
@@ -1793,19 +1803,19 @@ ul.mega-menu {
 			float: left;
 		}
 			.gla_logo_container img {
-				height: 40px;
+				height: 35px;
 				width: auto;
 				display: inline-block;
-				top: 22px;
+				top: 10px;
 				position: relative;
 				float: left;
-				margin-right: 10px;
+				margin-right: 3px;
 				-webkit-transition: all 0.3s;
 				-o-transition: all 0.3s;
 				transition: all 0.3s;
 			}
 			.gla_first_step .gla_logo_rev {
-				filter:invert(100%);
+				/*animation: heart 2s ease-in-out;*/
 			}
 				.gla_second_step .gla_logo_container img {
 					height: 19px;
@@ -3824,7 +3834,6 @@ video#video_background  {
 	cursor: pointer;
 }
 .gla_icon_boxes {
-	margin-top: 80px;
 	margin-bottom: -30px;
 }
 	.gla_simple_block .gla_icon_boxes {

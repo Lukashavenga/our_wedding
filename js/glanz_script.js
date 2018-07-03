@@ -42,53 +42,7 @@
     })
   $('.date_picker').datepicker();
 
-    /*Gallery Lightbox*/
-	$('.lightbox').magnificPopup({ 
-	  type: 'image',
-	  gallery:{
-	    enabled:true
-	  }
-	});
-	$('.video').magnificPopup({
-	  type: 'iframe',
-	  iframe: {
-		  markup: '<div class="mfp-iframe-scaler">'+
-		            '<div class="mfp-close"></div>'+
-		            '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
-		          '</div>', // HTML markup of popup, `mfp-close` will be replaced by the close button
-
-		  patterns: {
-		    youtube: {
-		      index: 'youtube.com/', // String that detects type of video (in this case YouTube). Simply via url.indexOf(index).
-
-		      id: 'v=', // String that splits URL in a two parts, second part should be %id%
-		      // Or null - full URL will be returned
-		      // Or a function that should return %id%, for example:
-		      // id: function(url) { return 'parsed id'; } 
-
-		      src: 'http://www.youtube.com/embed/%id%?autoplay=1' // URL that will be set as a source for iframe. 
-		    },
-		    vimeo: {
-		      index: 'vimeo.com/',
-		      id: '/',
-		      src: 'http://player.vimeo.com/video/%id%?autoplay=1'
-		    },
-		    gmaps: {
-		      index: '//maps.google.',
-		      src: '%id%&output=embed'
-		    }
-
-		    // you may add here more sources
-
-		  },
-
-		  srcAction: 'iframe_src', // Templating object key. First part defines CSS selector, second attribute. "iframe_src" means: find "iframe" and set attribute "src".
-		}  
-	  
-	});
-	
 	/*OWL Intro Slider*/
-
 	if ($('.gla_slider_carousel .gla_slider').length>1) {
 		
 		if($('#video_background').length==1) {
@@ -336,25 +290,25 @@
 		var position = $(this).attr('data-position');
 		var height = $(this).attr('data-height');
 		if (image){
-			$(this).css('background-image', 'url('+image+')');	
+			$(this).css('background-image', 'url('+image+')');
 		}
 		if (gradient){
-			$(this).css('background-image', gradient);	
+			$(this).css('background-image', gradient);
 		}
 		if (color){
-			$(this).css('background-color', color);	
+			$(this).css('background-color', color);
 		}
 		if (blend){
-			$(this).css('background-blend-mode', blend);	
+			$(this).css('background-blend-mode', blend);
 		}
 		if (position){
-			$(this).css('background-position', position);	
+			$(this).css('background-position', position);
 		}
 		if (opacity){
-			$(this).css('opacity', opacity);	
+			$(this).css('opacity', opacity);
 		}
 		if (height){
-			$(this).css('height', height);	
+			$(this).css('height', height);
 		}
 
 	});
@@ -449,25 +403,23 @@
 
 	});
 
-	$('.gla_countdown_gold').each(function(){
-		var year = $(this).attr('data-year');
-		var month = $(this).attr('data-month');
-		var day = $(this).attr('data-day');
-		$(this).countdown({
-			until: new Date(year,month-1,day),
-			layout: '<span class="countdown-row countdown-show3"><span class="countdown-section"><span class="countdown-amount"><span class="gla_image_day gla_image{d100}"></span><span class="gla_image{d10}"></span><span class="gla_image{d1}"></span></span><span class="countdown-period">Dae</span></span><span class="countdown-section"><span class="countdown-amount"><span class="gla_image_hours gla_image{h10}"></span><span class="gla_image{h1}"></span></span><span class="countdown-period">Ure</span></span><span class="countdown-section"><span class="countdown-amount"><span class="gla_image_minutes gla_image{m10}"></span><span class="gla_image{m1}"></span></span><span class="countdown-period">Minute</span></span><span class="countdown-section"><span class="countdown-amount"><span class="gla_image_sec gla_image{s10}"></span><span class="gla_image{s1}"></span></span><span class="countdown-period">Sekondes</span></span></span>	'
-		});
-
-	});
-
 
 	/*Scroll Effect*/
-	$('.gla_go').on("click", function(e){
+    var $root = $('html, body');
+
+	$('.gla_go, a[href^="#"]').on("click", function(e){
+        // event.preventDefault();
+        var href = $.attr(this, 'href');
+		console.log(href);
 		var anchor = $(this);
 		$('html, body').stop().animate({
 			scrollTop: $(anchor.attr('href')).offset().top
-		}, 300);
-		e.preventDefault();
+		}, 800,function () {
+			if(href)
+				window.location.hash = href;
+        });
+
+        return false;
 	});
 
 	/*Animation Block Delay*/
@@ -480,22 +432,6 @@
 		})
 	})
 
-	/*Increase-Decrease*/
-    $('.increase-qty').on("click", function(e){
-    	var qtya = $(this).parents('.add-to-cart').find('.qty').val();
-    	var qtyb = qtya * 1 + 1;
-    	$(this).parents('.add-to-cart').find('#qty').val(qtyb);
-		e.preventDefault();
-	});
-	$('.decrease-qty').on("click", function(e){
-    	var qtya = $(this).parents('.add-to-cart').find('#qty').val();
-    	var qtyb = qtya * 1 - 1;
-    	if (qtyb < 1) {
-            qtyb = 1;
-        }
-    	$(this).parents('.add-to-cart').find('#qty').val(qtyb);
-		e.preventDefault();
-	});
 
 	/* Shortcode Nav */
 	var top_offset = $('header').height() - 1; 
@@ -521,7 +457,7 @@
 		if ($(window).scrollTop() > 100) {
 			$(".gla_logo").addClass('active');
 			$('body').addClass('gla_first_step');
-			
+
 		}
 		else {
 			$('body').removeClass('gla_first_step');
@@ -609,7 +545,8 @@
 		/*SkroolR*/
 		if( !device.tablet() && !device.mobile() ) {
 			var s = skrollr.init({
-				forceHeight: false,
+				forceHeight: true,
+                smoothScrolling:true
 			});
 		}
 		
