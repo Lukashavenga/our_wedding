@@ -25,19 +25,24 @@ setRSVPstatus:function(RSVPstatus,codes,callback){
         );
     }
 },
-setRSVP:function(RSVPstatus, updatedBy, notes, codeToUpdate, callback){
+setRSVP:function(RSVPstatus, updatedBy, notes, plusone, codeToUpdate, callback){
     return db.query(
         "UPDATE guests " +
         "SET rsvp_status=?, " +
         "date_last_updated=?, " +
         "updated_by=?, " +
-        "notes=? " +
+        "notes=?, " +
+        "plus_one_name=(CASE WHEN `plus_one`\n" +
+        "                    THEN ?\n" +
+        "                    ELSE NULL\n" +
+        "                 END)\n"+
         "WHERE rsvp_code=?",
         [
             RSVPstatus,
             this.getCurrentDateTime(),
             updatedBy,
             notes,
+            plusone,
             codeToUpdate,
         ],
         callback

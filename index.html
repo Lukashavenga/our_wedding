@@ -247,7 +247,7 @@
                         <div class="col-md-6 col-md-push-6 gla_image_bck" data-color="#fff">
                             <div class="gla_simple_block">
                                 <h2>Annelet Van Heerden</h2>
-                                <p><b>Bruid</b> - Dogter van Madelein en Andre van Heerden. Oorspronklik van Malmesbury, Annelet het grafika en druk ontwerp studeer in Kaap Stad en doen tans werk vir Edge Learning Media in Westlake </p>
+                                <p><b>Bruid</b> - Dogter van Madeleine en Andre van Heerden. Oorspronklik van Malmesbury, Annelet het grafika en druk ontwerp studeer in Kaap Stad en doen tans werk vir Edge Learning Media in Westlake </p>
                                 <!-- Social Buttons -->
                                 <div class="gla_footer_social">
                                     <a href="https://www.facebook.com/annelet.vanheerden1"><i class="ti ti-facebook gla_icon_box"></i></a>
@@ -275,8 +275,8 @@
 
 
                 <div class="container text-center">
-                    <h2>Waar en Waneer</h2>
-                    <p><i>"Te midde van majestueuse blou gombome en skilderagtige wingerde bied die pragtige Allesverloren Boskampel 'n skouspelagtige uitsig op die berg, uitstekende kos, bekroonde wyne en 'n pragtige onthaal."</i></p>
+                    <h2>Waar en Wanneer</h2>
+                    <p><i>"Te midde van majestueuse blou gombome en skilderagtige wingerde bied die pragtige Allesverloren Boskapel 'n skouspelagtige uitsig op die berg, uitstekende kos, bekroonde wyne en 'n pragtige onthaal."</i></p>
                     <!-- boxes -->
                     <div class="gla_icon_boxes row text-left">
 
@@ -290,7 +290,7 @@
 
                                 <span class="gla_news_title">Trou Seremonie</span>
                                 <p>
-                                    Die trou seremonie vind plaas op Allesverloren wyn plaas in hul woud ontvangs. Na aankoms van die onthaal lokaal le dit aan die regter kant.
+                                    Die trou seremonie vind plaas op Allesverloren wyn plaas in hul woud ontvangs. Na aankoms van die onthaal lokaal lê dit aan die regter kant.
                                     <br><b>16:00<br>Allesverloren, woud<br>R46 R311, Riebeek West</b></p>
 
                             </a>
@@ -305,7 +305,7 @@
 
 
                                 <span class="gla_news_title">Onthaal</span>
-                                <p>Die onthaal is 'n kort stappie van waar ons in die huwelik tree, langs die woud le die saal waar daar verversings sal wag terwyl julle vir ons wag.
+                                <p>Die onthaal is 'n kort stappie van waar ons in die huwelik tree, langs die woud lê die saal waar daar verversings sal wag terwyl julle vir ons wag.
                                     <br><b>volg direk na die seremonie<br>Allesverloren, onthaal saal<br>R46 R311, Riebeek West</b></p>
                             </a>
                         </div>
@@ -315,9 +315,9 @@
                     </div>
                     <!-- boxes end -->
 
+                    <div class="info_subtext">Ongelukkig geen kinders nie</div>
                 </div>
                 <!-- container end -->
-
             </section>
             <!-- section end -->
 
@@ -398,7 +398,7 @@
                     <div id="rsvp_section" class="rsvp_section">
                         <h3 id="rsvp_heading" class="gla_subtitle">Hi</h3>
                         <div id="partner_link" class="rsvp_sub_section">
-                            <div id="partner_link_label"></div><span id="partner_link_choice"></span>
+                            <div id="partner_link_label"></div><span id="partner_link_choice" class="rsvp_link"></span>
                         </div>
 
                         <div class="row">
@@ -407,27 +407,56 @@
                                 <form id="rsvp_section_submit">
                                     <div class="row">
                                         <div class="rsvp_attend_container">
-                                            <div class="rsvp_attend">
-                                                <label>Sien ons jou daar?</label>
+                                            <div class="rsvp_attend user">
+                                                <h4>Sien ons jou daar?*</h4>
 
-                                                <input type="radio" name="attend" value="going">
-                                                <span>Ja! ~ ek sal daar wees ヽ(^◇^*)/</span><br>
-                                                <input type="radio" name="attend" value="not going">
-                                                <span>Net nee</span>
+                                                <div class="radio_container">
+                                                    <ul class="radio_ul">
+                                                        <li class="radio_li">
+                                                            <input id="going_1" type="radio" name="attend" value="going">
+                                                            <label for="going_1">Ja! ~ ek sal daar wees ヽ(^◇^*)/</label>
+
+                                                            <div class="check"><div class="inside"></div></div>
+                                                        </li>
+                                                        <li class="radio_li">
+                                                            <input id="going_2" type="radio" name="attend" value="not going">
+                                                            <label for="going_2">Nee, ongelukkig nie</label>
+
+                                                            <div class="check"><div class="inside"></div></div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
 
                                             <div id="partner_rsvp" class="rsvp_attend">
-                                                <label></label>
+                                                <h4></h4>
 
-                                                <span>Ja! ~ hulle sal daar wees</span>
-                                                <input type="radio" name="partner_attend" value="going"><br>
-                                                <span>Nee hulle sal nie</span>
-                                                <input type="radio" name="partner_attend" value="not going">
+                                                <div class="radio_container">
+                                                    <ul class="radio_ul">
+                                                        <li class="radio_li">
+                                                            <input id="partner_rsvp_going_1" type="radio" name="partner_attend" value="going">
+                                                            <label for="partner_rsvp_going_1">Ja! ~ hulle sal daar wees</label>
+
+                                                            <div class="check"><div class="inside"></div></div>
+                                                        </li>
+                                                        <li class="radio_li">
+                                                            <input id="partner_rsvp_going_2" type="radio" name="partner_attend" value="not going">
+                                                            <label for="partner_rsvp_going_2">Nee hulle sal nie</label>
+
+                                                            <div class="check"><div class="inside"></div></div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div id="plusone_rsvp" class="rsvp_attend">
+                                                <h4>Jou metgesel se Naam en Van?</h4>
+                                                <input type="text" name="plusone_name" class="form-control form-opacity plusone_name"/>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
-                                            <label>Notas (allergieë of enige spesiale vereistes)</label>
+                                            <label>Notas (allergies vir enigiets?)</label>
                                             <textarea name="message" class="form-control form-opacity"></textarea>
                                         </div>
                                         <div class="col-md-12">
@@ -444,7 +473,7 @@
                         <div id="rsvp_status_message"></div>
                         <div id="resubmit_rsvp" class="rsvp_link">Will jy dit dalk verander?</div>
                     </div>
-                    <div class="subtext" style="margin: 50px 0 -100px 0;">Indien daar enige komplikasies of vrae is, <a href="mailto:lukas.havenga@hotmail.com">kontak gerus vir Lukas direk</a>! :)</div>
+                    <div class="subtext" style="margin: 50px 0 -5vw 0">Indien daar enige komplikasies of vrae is, <a class="rsvp_link" href="mailto:lukas.havenga@hotmail.com">kontak gerus vir Lukas direk</a>! :)</div>
                 </div>
                 <!-- container end -->
 

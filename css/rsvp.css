@@ -5,17 +5,50 @@
 .rsvp_attend_container {
     display: flex;
     text-align: left;
+    flex-wrap: wrap;
     justify-content: space-between;
-    margin: 50px 30px 70px 30px;
+    margin: 50px 50px 70px 50px;
 }
 .rsvp_attend{
     text-align: right;
+    flex: 1;
+    min-width: 280px;
 }
 .rsvp_attend:first-child {
     text-align: left;
 }
 .rsvp_attend input[type='radio']{
     margin: 15px;
+}
+.rsvp_link {
+    cursor: pointer;
+    font-weight: 500;
+    text-shadow: 3px 3px 1px #191919;
+}
+.rsvp_link:hover {
+    text-shadow: 1px 1px 4px #b1b1b1;
+    text-decoration: underline;
+}
+.rsvp_code{
+    max-width: 500px;
+    margin: 0 auto;
+    display: inline-block;
+}
+#partner_link_choice {
+    line-height: 50px;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+#partner_link_choice:after {
+    text-decoration: overline;
+}
+#rsvp_status_message {
+    font-size: 20px;
+    line-height: 100px;
+}
+#rsvp_status_message b{
+    text-transform: uppercase;
 }
 
 .subtext{
@@ -29,4 +62,152 @@
 .subtext img{
     width: 25px;
     margin: -9px -3px 0 -3px;
+}
+.info_subtext{
+    text-shadow: 1px 1px 1px #d2d2d2;
+    line-height: 50px;
+}
+
+@-webkit-keyframes validation {
+    0%   { color: #f54b4b; }
+    25%   { color: #f54b4b; }
+    50%   { color: #f54b4b; }
+    75%   { color: #f54b4b; }
+    100% { color: #ffffff; }
+}
+@-moz-keyframes validation {
+    0%   { color: #f54b4b; }
+    25%   { color: #f54b4b; }
+    50%   { color: #f54b4b; }
+    75%   { color: #f54b4b; }
+    100% { color: #ffffff; }
+}
+@-o-keyframes validation {
+    0%   { color: #f54b4b; }
+    25%   { color: #f54b4b; }
+    50%   { color: #f54b4b; }
+    75%   { color: #f54b4b; }
+    100% { color: #ffffff; }
+}
+@keyframes validation {
+    0%   { color: #f54b4b; }
+    25%   { color: #f54b4b; }
+    50%   { color: #f54b4b; }
+    75%   { color: #f54b4b; }
+    100% { color: #ffffff; }
+}
+
+.validation{
+    -webkit-animation: validation 5s; /* Safari 4+ */
+    -moz-animation:    validation 5s; /* Fx 5+ */
+    -o-animation:      validation 5s; /* Opera 12+ */
+    animation:         validation 5s; /* IE 10+, Fx 29+ */
+}
+
+
+/*Radio Buttons https://codepen.io/AngelaVelasquez/pen/Eypnq
+.rsvp_attend h4 {
+    /*margin-left: 20px;*/
+.radio_container{
+    display: block;
+    position: relative;
+    height: auto;
+    /*width: 400px;*/
+}
+.radio_container ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+ul.radio_ul li{
+    color: #ffffff;
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+    height: auto;
+}
+ul.radio_ul li input[type=radio]{
+    position: absolute;
+    visibility: hidden;
+}
+
+ul.radio_ul li label{
+    display: block;
+    position: relative;
+    font-weight: 300;
+    font-size: 14px;
+    padding-left: 40px;
+    height: 30px;
+    z-index: 9;
+    cursor: pointer;
+    -webkit-transition: all 0.25s linear;
+}
+
+ul.radio_ul li.radio_li:hover label{
+    color: #ffffff;
+    text-shadow: 1px 1px 1px #2d2d2d;
+}
+
+ul.radio_ul li.radio_li .check{
+    display: block;
+    position: absolute;
+    border: 5px solid #ababab;
+    border-radius: 100%;
+    height: 27px;
+    width: 27px;
+    top: 0;
+    z-index: 5;
+    transition: border .25s linear;
+    -webkit-transition: border .25s linear;
+}
+
+ul.radio_ul li.radio_li:hover .check {
+    border: 5px solid #FFFFFF;
+}
+
+ul.radio_ul li.radio_li .check::before {
+    display: block;
+    position: absolute;
+    content: '';
+    border-radius: 100%;
+    height: 11px;
+    width: 11px;
+    top: 3px;
+    left: 3px;
+    margin: auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+}
+
+.radio_container input[type=radio]:checked ~ .check {
+    border: 5px solid #0DFF92;
+}
+
+.radio_container input[type=radio]:checked ~ .check::before{
+    background: #0DFF92;
+}
+
+.radio_container input[type=radio]:checked ~ label{
+    color: #0DFF92;
+}
+
+.radio_container li.radio_li:hover input[type=radio]:checked ~ label{
+    color: #0DFF92;
+    text-shadow: 1px 1px 1px #2d2d2d;
+}
+.radio_container li.radio_li:hover input[type=radio]:checked ~ .check{
+    border: 5px solid #0DFF92;
+}
+
+#partner_rsvp .check {
+    right: 0;
+}
+#partner_rsvp li label {
+    padding-right: 40px;
+}
+.plusone_name{
+    text-align: right;
 }

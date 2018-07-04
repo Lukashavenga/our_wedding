@@ -41,9 +41,10 @@ router.post('/:code',function(req,res,next){
         for(let i =0; i < len; i++){
             let RSVPstatus = rsvps[i].status,
                 notes = rsvps[i].notes,
+                plusone = rsvps[i].plusone || null,
                 codeToUpdate = rsvps[i].code;
 
-            Guests.setRSVP(RSVPstatus, updatedBy, notes, codeToUpdate, function(err,rows){
+            Guests.setRSVP(RSVPstatus, updatedBy, notes, plusone, codeToUpdate, function(err,rows){
                 if(err)
                     res.json(err);
                 if(i + 1 === len)
