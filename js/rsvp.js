@@ -21,16 +21,14 @@
     };
 
     // Dev
-    let config = {
-      url: 'http://localhost',
-      port: '3000'
-    };
+    // let config = {
+    //  url: 'http://localhost:3000'
+    //};
 
     // Prod
-    // let config = {
-    //     url: 'http://localhost',
-    //     port: ':3000'
-    // };
+    let config = {
+        url: 'https://lukashavenga.com'
+    };
 
     let toggleSection = function(newSection){
         // default
@@ -129,7 +127,7 @@
             // ajax call
             $.ajax({
                 method: "GET",
-                url: `${config.url}:${config.port}/guests/${code}`,
+                url: `${config.url}/guests/${code}`,
             }).done(function (response) {
                 if (response && response.length) {
                     store.current_code = response[0].rsvp_code || null;
@@ -145,7 +143,7 @@
                     if (response[0].linked_to && response[0].linked_to !== ''){
                         $.ajax({
                             method: "GET",
-                            url: `${config.url}:${config.port}/guests/${response[0].linked_to}`,
+                            url: `${config.url}/guests/${response[0].linked_to}`,
                         }).done(function (partner) {
                             if (partner && partner.length)
                                 store.linked_user_name = partner[0].guest_name;
@@ -174,7 +172,7 @@
     let submitRSVP = function(code,rsvps,callback){
         $.ajax({
             method: "POST",
-            url:`${config.url}:${config.port}/guests/${code}`,
+            url:`${config.url}/guests/${code}`,
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify({rsvps})
         }).done(function(response) {
