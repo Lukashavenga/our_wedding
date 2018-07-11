@@ -40,10 +40,12 @@
     };
 
     let loadCodeSection = function(msg = false){
-        if(msg)
+        if(msg){
             $('#rsvp_code_label').html(msg);
-        else
+        }
+        else{
             $('#rsvp_code_label').html('Sleutel asb in jou 3 syfer RSVP kode');
+        }
 
         toggleSection($('#code_section'));
     };
@@ -93,12 +95,13 @@
         $('#no_partner_link').hide();
         $('#plusone_rsvp').hide();
 
-        if($('body').find('[name=attend]:checked')[0])
+        if($('body').find('[name=attend]:checked')[0]){
             $('body').find('[name=attend]:checked')[0].checked = false;
+        }
 
-        if($('body').find('[name=partner_attend]:checked')[0])
+        if($('body').find('[name=partner_attend]:checked')[0]){
             $('body').find('[name=partner_attend]:checked')[0].checked = false;
-
+        }
 
         if(msg){
             $('.rsvp_attend.user h4').html(msg);
@@ -107,16 +110,20 @@
         }
 
         if(store.current_code){
-            if(store.current_user && store.current_user !== '')
+            if(store.current_user && store.current_user !== ''){
                 $('#rsvp_heading').html('Hi <b>'+store.current_user+'</b>!');
+            }
 
-            if(store.linked_user_name && store.linked_user_name !== '')
+            if(store.linked_user_name && store.linked_user_name !== ''){
                 loadPartnerSection();
+            }
             else{
-                if(store.plus_one && store.plus_one !== '')
+                if(store.plus_one && store.plus_one !== ''){
                     loadPlusOneSection();
-                else
+                }
+                else{
                     loadNoPlusOne();
+                }
             }
 
             toggleSection($('#rsvp_section'));
@@ -124,8 +131,9 @@
     };
 
     let loadMessage = function(msg){
-        if(msg)
+        if(msg){
             $('#rsvp_status_message').html(msg);
+        }
 
         toggleSection($('#message_section'));
     };
@@ -153,8 +161,9 @@
                             method: "GET",
                             url: `${config.url}/guests/${response[0].linked_to}`,
                         }).done(function (partner) {
-                            if (partner && partner.length)
+                            if (partner && partner.length){
                                 store.linked_user_name = partner[0].guest_name;
+                            }
                         }).complete(function(){
                             // IF user has already submitted a response, give option to change
                             if (response[0].rsvp_status && response[0].rsvp_status != null && response[0].rsvp_status !== ''){
@@ -203,8 +212,9 @@
             }, 500);
             if(response){
                 console.log(response);
-                if(response.errno)
+                if(response.errno){
                     callback('Hmmm... lyk my iets het verkeerd gegaan - <a class="rsvp_link" href="mailto:lukas.havenga@hotmail.com">laat weet my maar direk!</a>');
+                }
             }
 
         }).fail(function(error){
