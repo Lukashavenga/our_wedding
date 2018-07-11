@@ -164,7 +164,12 @@
                         }).complete(function() {
                             // IF user has already submitted a response, give option to change
                             if (response[0].rsvp_status && response[0].rsvp_status != null && response[0].rsvp_status !== '') {
-                                var status = response[0].rsvp_status === 'going' ? 'gaan' : 'gaan nie';
+                                var status = 'gaan';
+                                if (response[0].rsvp_status === 'going') {
+                                    status = 'gaan';
+                                } else {
+                                    status = 'gaan nie';
+                                }
                                 var msg = 'Volgens ons uhm.. boeke, het jy gese jy <b>' + status + '</b>';
                                 loadMessage(msg);
                                 $('#resubmit_rsvp').fadeIn();
@@ -175,7 +180,12 @@
                     } else {
                         // IF user has already submitted a response, give option to change
                         if (response[0].rsvp_status && response[0].rsvp_status != null && response[0].rsvp_status !== '') {
-                            var status = response[0].rsvp_status === 'going' ? 'gaan' : 'gaan nie';
+                            var status = 'gaan';
+                            if (response[0].rsvp_status === 'going') {
+                                status = 'gaan';
+                            } else {
+                                status = 'gaan nie';
+                            }
                             var msg = 'Volgens ons uhm.. boeke, het jy gese jy <b>' + status + '</b>';
                             loadMessage(msg);
                             $('#resubmit_rsvp').fadeIn();
