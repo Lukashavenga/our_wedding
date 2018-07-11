@@ -9,7 +9,7 @@
         }, 500);
     });
 
-    let store = {
+    var store = {
         current_user: '',
         current_code: null,
         rsvp_status: null,
@@ -21,16 +21,16 @@
     };
 
     // Dev
-    // let config = {
+    // var config = {
     //  url: 'http://localhost:3000'
     // };
 
     // Prod
-    let config = {
+    var config = {
         url: 'https://lukashavenga.com'
     };
 
-    let toggleSection = function(newSection){
+    var toggleSection = function(newSection){
         // default
         $('#resubmit_rsvp').fadeOut('fast').promise().done(function() {
             $('.rsvp_section').fadeOut('fast').promise().done(function() {
@@ -39,7 +39,7 @@
         });
     };
 
-    let loadCodeSection = function(msg = false){
+    var loadCodeSection = function(msg = false){
         if(msg){
             $('#rsvp_code_label').html(msg);
         }
@@ -50,7 +50,7 @@
         toggleSection($('#code_section'));
     };
 
-    let loadPartnerSection = function(){
+    var loadPartnerSection = function(){
         $('#partner_link_label').html('Jy gaan saam <b>'+store.linked_user_name+'</b>, will jy vir hulle ook RSVP? ');
 
         $('#partner_rsvp h4').html('En sien ons vir <b>'+store.linked_user_name+'</b> daar?');
@@ -68,7 +68,7 @@
         $('#partner_link').fadeIn();
     };
 
-    let loadPlusOneSection = function(){
+    var loadPlusOneSection = function(){
         $('#partner_link_label').html('Jy het die opsie van \'n metgesel! Beplan u om iemand saam te bring?');
         $('#partner_link_choice').val('Ja').off().on('click',function () {
             if ($(this).val() === 'Ja') {
@@ -84,11 +84,11 @@
         $('#partner_link').fadeIn();
     };
 
-    let loadNoPlusOne = function(){
+    var loadNoPlusOne = function(){
         $('#no_partner_link').html('Een plek is vir u gereserveer by ons bruilof').fadeIn();
     };
 
-    let loadRSVPSection = function(msg){
+    var loadRSVPSection = function(msg){
         // Defaults for RSVP section
         $('#partner_rsvp').hide();
         $('#partner_link').hide();
@@ -130,7 +130,7 @@
         }
     };
 
-    let loadMessage = function(msg){
+    var loadMessage = function(msg){
         if(msg){
             $('#rsvp_status_message').html(msg);
         }
@@ -138,7 +138,7 @@
         toggleSection($('#message_section'));
     };
 
-    let submitCode = function(code,callback){
+    var submitCode = function(code,callback){
         if(code) {
             // ajax call
             $.ajax({
@@ -167,8 +167,8 @@
                         }).complete(function(){
                             // IF user has already submitted a response, give option to change
                             if (response[0].rsvp_status && response[0].rsvp_status != null && response[0].rsvp_status !== ''){
-                                let status = response[0].rsvp_status === 'going' ? 'gaan' : 'gaan nie';
-                                let msg = 'Volgens ons uhm.. boeke, het jy gese jy <b>'+status+'</b>';
+                                var status = response[0].rsvp_status === 'going' ? 'gaan' : 'gaan nie';
+                                var msg = 'Volgens ons uhm.. boeke, het jy gese jy <b>'+status+'</b>';
                                 loadMessage(msg);
                                 $('#resubmit_rsvp').fadeIn();
                             }
@@ -179,8 +179,8 @@
                     }else{
                         // IF user has already submitted a response, give option to change
                         if (response[0].rsvp_status && response[0].rsvp_status != null && response[0].rsvp_status !== ''){
-                            let status = response[0].rsvp_status === 'going' ? 'gaan' : 'gaan nie';
-                            let msg = 'Volgens ons uhm.. boeke, het jy gese jy <b>'+status+'</b>';
+                            var status = response[0].rsvp_status === 'going' ? 'gaan' : 'gaan nie';
+                            var msg = 'Volgens ons uhm.. boeke, het jy gese jy <b>'+status+'</b>';
                             loadMessage(msg);
                             $('#resubmit_rsvp').fadeIn();
                         }
@@ -195,7 +195,7 @@
         }
     };
 
-    let submitRSVP = function(code,rsvps,callback){
+    var submitRSVP = function(code,rsvps,callback){
         $.ajax({
             method: "POST",
             url:`${config.url}/guests/${code}`,
@@ -231,11 +231,11 @@
 
     $('#rsvp_section_submit').submit(function( event ) {
         event.preventDefault();
-        let code = store.current_code;
-        let status = $(this).find('[name=attend]:checked').val();
-        let notes = $(this).find('[name=message]').val();
-        let plusone = $(this).find('[name=plusone_name]').val() || null;
-        let rsvps = [{'status':status,'code':code,'notes':notes, 'plusone':plusone}];
+        var code = store.current_code;
+        var status = $(this).find('[name=attend]:checked').val();
+        var notes = $(this).find('[name=message]').val();
+        var plusone = $(this).find('[name=plusone_name]').val() || null;
+        var rsvps = [{'status':status,'code':code,'notes':notes, 'plusone':plusone}];
 
         // Ensure RSVP is set for current user
         if(status){
@@ -243,8 +243,8 @@
             // If bringing a plus one, require name
             if(!store.bringing_plusone || (store.bringing_plusone && plusone)){
                 if(store.linked_submit){
-                    let partner_code = store.linked_code;
-                    let partner_status = $(this).find('[name=partner_attend]:checked').val();
+                    var partner_code = store.linked_code;
+                    var partner_status = $(this).find('[name=partner_attend]:checked').val();
                     // There's no partner notes
 
                     rsvps.push({'status':partner_status,'code':partner_code,'notes':notes,'plusone':plusone});
