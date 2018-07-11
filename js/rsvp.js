@@ -39,7 +39,7 @@
         });
     };
 
-    var loadCodeSection = function(msg = false){
+    var loadCodeSection = function(msg){
         if(msg){
             $('#rsvp_code_label').html(msg);
         }
