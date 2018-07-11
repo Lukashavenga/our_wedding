@@ -23,7 +23,7 @@
     // Dev
     // let config = {
     //  url: 'http://localhost:3000'
-    //};
+    // };
 
     // Prod
     let config = {
@@ -49,16 +49,16 @@
     };
 
     let loadPartnerSection = function(){
-        $('#partner_link_label').html('Ons sien jy gaan saam <b>'+store.linked_user_name+'</b>, will jy vir hulle ook RSVP? ');
+        $('#partner_link_label').html('Jy gaan saam <b>'+store.linked_user_name+'</b>, will jy vir hulle ook RSVP? ');
 
         $('#partner_rsvp h4').html('En sien ons vir <b>'+store.linked_user_name+'</b> daar?');
-        $('#partner_link_choice').html('Ja').off().on('click',function () {
-            if($(this).html() === 'Ja'){
-                $(this).html('Nee');
+        $('#partner_link_choice').val('Ja').off().on('click',function () {
+            if($(this).val() === 'Ja'){
+                $(this).val('Nee');
                 store.linked_submit = true;
                 $('#partner_rsvp').fadeIn();
             }else{
-                $(this).html('Ja');
+                $(this).val('Ja');
                 store.linked_submit = false;
                 $('#partner_rsvp').fadeOut();
             }
@@ -67,14 +67,14 @@
     };
 
     let loadPlusOneSection = function(){
-        $('#partner_link_label').html('Ons sien jy het die opsie van \'n metgesel! Beplan u om iemand saam te bring?');
-        $('#partner_link_choice').html('Ja').off().on('click',function () {
-            if ($(this).html() === 'Ja') {
-                $(this).html('Nee');
+        $('#partner_link_label').html('Jy het die opsie van \'n metgesel! Beplan u om iemand saam te bring?');
+        $('#partner_link_choice').val('Ja').off().on('click',function () {
+            if ($(this).val() === 'Ja') {
+                $(this).val('Nee');
                 store.bringing_plusone = true;
                 $('#plusone_rsvp').fadeIn();
             } else {
-                $(this).html('Ja');
+                $(this).val('Ja');
                 store.bringing_plusone = false;
                 $('#plusone_rsvp').fadeOut();
             }
@@ -82,10 +82,15 @@
         $('#partner_link').fadeIn();
     };
 
+    let loadNoPlusOne = function(){
+        $('#no_partner_link').html('Een plek is vir u gereserveer by ons bruilof').fadeIn();
+    };
+
     let loadRSVPSection = function(msg){
         // Defaults for RSVP section
         $('#partner_rsvp').hide();
         $('#partner_link').hide();
+        $('#no_partner_link').hide();
         $('#plusone_rsvp').hide();
 
         if($('body').find('[name=attend]:checked')[0])
@@ -98,7 +103,7 @@
         if(msg){
             $('.rsvp_attend.user h4').html(msg);
         }else{
-            $('.rsvp_attend.user h4').html('Sien ons jou daar?*');
+            $('.rsvp_attend.user h4').html('*Sien ons jou daar?');
         }
 
         if(store.current_code){
@@ -107,9 +112,12 @@
 
             if(store.linked_user_name && store.linked_user_name !== '')
                 loadPartnerSection();
-
-            if(store.plus_one && store.plus_one !== '')
-                loadPlusOneSection();
+            else{
+                if(store.plus_one && store.plus_one !== '')
+                    loadPlusOneSection();
+                else
+                    loadNoPlusOne();
+            }
 
             toggleSection($('#rsvp_section'));
         }
@@ -160,7 +168,16 @@
                             }
                         });
                     }else{
-                        callback();
+                        // IF user has already submitted a response, give option to change
+                        if (response[0].rsvp_status && response[0].rsvp_status != null && response[0].rsvp_status !== ''){
+                            let status = response[0].rsvp_status === 'going' ? 'gaan' : 'gaan nie';
+                            let msg = 'Volgens ons uhm.. boeke, het jy gese jy <b>'+status+'</b>';
+                            loadMessage(msg);
+                            $('#resubmit_rsvp').fadeIn();
+                        }
+                        else{
+                            callback();
+                        }
                     }
                 }
             });
@@ -176,7 +193,14 @@
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify({rsvps})
         }).done(function(response) {
-            callback('Perfek! baie dankie vir die laat weet - ons het dit so aangeteken :D');
+            callback('Perfek! Baie dankie vir die laat weet - ons het dit so aangeteken!');
+            $('#the_line').hide();
+            $('#rsvp_by').hide();
+            $('#no_kids').hide();
+            $('#contact_me').hide();
+            $('html, body').animate({
+                scrollTop: $('#rsvp').offset().top - 50
+            }, 500);
             if(response){
                 console.log(response);
                 if(response.errno)

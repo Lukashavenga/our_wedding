@@ -396,8 +396,9 @@
 		var year = $(this).attr('data-year');
 		var month = $(this).attr('data-month');
 		var day = $(this).attr('data-day');
+		var hour = $(this).attr('data-hour');
 		$(this).countdown({
-			until: new Date(year,month-1,day),
+			until: new Date(year,month-1,day,hour),
             labels: ['Jare', 'Maande', 'Weke', 'Dae', 'Ure', 'Minute', 'Sekondes']
 		});
 
