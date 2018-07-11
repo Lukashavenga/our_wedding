@@ -4,6 +4,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors=require('cors');
+var nocache = require('nocache');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var Tasks=require('./routes/Guests');
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: false }));
+app.use(nocache());
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
