@@ -278,3 +278,11 @@
     // Default
     loadCodeSection();
 })(jQuery);
+
+
+
+var toggleMenu = function(){
+    $('.gla_main_menu').next('.gla_main_menu_content').toggleClass('active');
+    $('.gla_main_menu').next().next('.gla_main_menu_content_menu').toggleClass('active');
+    $('.gla_main_menu').toggleClass('active');
+};
