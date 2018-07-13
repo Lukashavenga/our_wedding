@@ -240,7 +240,7 @@
         var code = store.current_code;
         var status = $(this).find('[name=attend]:checked').val();
         var notes = $(this).find('[name=message]').val();
-        var plusone = $(this).find('[name=plusone_name]').val() || null;
+        var plusone = $(this).find('[name=plusone_name]').val();
         var rsvps = [{ 'status': status, 'code': code, 'notes': notes, 'plusone': plusone }];
 
         // Ensure RSVP is set for current user
